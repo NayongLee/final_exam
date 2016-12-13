@@ -51,6 +51,7 @@ class CustomerThread extends Thread{
     CustomerThread(Customer customer){
         this.customer = customer;
     }
+
     // need something here
 }
 

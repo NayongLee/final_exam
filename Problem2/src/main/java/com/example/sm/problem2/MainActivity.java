@@ -1,4 +1,5 @@
 package com.example.sm.problem2;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +12,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     MyBaseAdapter adapter;
     ListView listview;
+    ArrayList<Employee> emp_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // need something here
 
         adapter = new MyBaseAdapter(this, emp_list);
         listview = (ListView) findViewById(R.id.listView1) ;
@@ -32,23 +33,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Employee employee;
 
         switch (v.getId()){
-            case R.id.btn_inc:
+            case R.id.btn_inc://button '+'
+                employee.increase();
                 // need something here
                 break;
 
             case R.id.btn_dec:
+                employee.decrease();
                 // need something here
                 break;
 
             case R.id.btn_store:
+                emp_list.add(employee);
                 // need something here
                 break;
 
             case R.id.btn_modify:
+                if(emp_list.contains(employee.getName()))
+                {    emp_list.remove(employee);
+                    emp_list.add(employee);}
+
                 // need something here
                 break;
 
             case R.id.btn_delete:
+                if(emp_list.contains(employee.getName()))
+                { emp_list.remove(employee);}
+
                 // need something here
                 break;
         }
